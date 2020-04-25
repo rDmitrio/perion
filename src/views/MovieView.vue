@@ -7,11 +7,21 @@
 <script lang="ts">
 import Vue from 'vue';
 import MovieService from '@/services/MovieService';
+import { mapState } from 'vuex';
 
 export default Vue.extend({
   name: 'MovieView',
+  data() {
+    return {
+      movieId: this.$route.params.movieId,
+    };
+  },
+  computed: {
+    ...mapState(['user']),
+  },
   async created() {
-    MovieService.movieService.getSpecificMovie(/* TODO */ '273b9080', /* TODO */ 'tt0372784');
+    console.log();
+    MovieService.movieService.getSpecificMovie(this.user.apiToken, this.movieId);
   },
 });
 </script>

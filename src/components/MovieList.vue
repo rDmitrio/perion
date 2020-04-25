@@ -11,6 +11,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import MovieService from '@/services/MovieService';
+import { mapState } from 'vuex';
 import MovieListItem from './MovieListItem.vue';
 import { Movie } from '../services/types';
 
@@ -21,12 +22,15 @@ export default Vue.extend({
       movies: [] as Movie[],
     };
   },
+  computed: {
+    ...mapState(['user']),
+  },
   async created() {
     await this.loadMovies();
   },
   methods: {
     async loadMovies() {
-      const result = await MovieService.movieService.getMovieList(/* TODO */ '273b9080');
+      const result = await MovieService.movieService.getMovieList(this.user.apiToken);
       this.movies = result.result;
     },
   },
