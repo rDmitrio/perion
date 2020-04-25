@@ -2,35 +2,35 @@ import axios, { AxiosInstance } from 'axios';
 import { MovieDetail } from './types';
 
 class MovieService {
-  private axiosInstance: AxiosInstance;
+  private http: AxiosInstance;
 
   constructor() {
-    this.axiosInstance = axios.create({
-      baseURL: 'http://www.omdbapi.com/',
+    this.http = axios.create({
+      baseURL: 'http://www.omdbapi.com/'
     });
   }
 
   public async getMovieList(token: string, page = 1) {
-    const result = await this.axiosInstance.get('/', {
+    const result = await this.http.get('/', {
       params: {
         s: 'Batman',
         page,
-        apikey: token,
-      },
+        apikey: token
+      }
     });
 
     return {
       result: result.data.Search,
-      numberOfResult: result.data.totalResults,
+      numberOfResult: result.data.totalResults
     };
   }
 
   public async getSpecificMovie(token: string, id: string): Promise<MovieDetail> {
-    const result = await this.axiosInstance.get('/', {
+    const result = await this.http.get('/', {
       params: {
         i: id,
-        apikey: token,
-      },
+        apikey: token
+      }
     });
 
     return result.data;
@@ -40,5 +40,5 @@ class MovieService {
 const movieService = new MovieService();
 
 export default {
-  movieService,
+  movieService
 };

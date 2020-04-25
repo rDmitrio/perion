@@ -1,45 +1,74 @@
 <template>
-  <div class="hello">
-    <MovieListItem
-      v-for="movie in movies"
+  <div class="movie-list">
+    <movie-list-item
+      v-for="movie in movies.list"
       :key="movie.imdbID"
       :movie="movie"
       />
+    <div style="width: 100%; padding: 70px 0;">
+      <button @click="onLoadMoreClick" class="load-more-btn">
+      Load more
+    </button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import MovieService from '@/services/MovieService';
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import MovieListItem from './MovieListItem.vue';
-import { Movie } from '../services/types';
 
 export default Vue.extend({
   name: 'MovieList',
+  computed: {
+    ...mapGetters({ movies: 'movie/info' })
+  },
   data() {
     return {
-      movies: [] as Movie[],
     };
   },
-  computed: {
-    ...mapState(['user']),
-  },
   async created() {
-    await this.loadMovies();
+    if (this.movies.list.length === 0) {
+      this.$store.dispatch('movie/loadMovies');
+    }
   },
   methods: {
-    async loadMovies() {
-      const result = await MovieService.movieService.getMovieList(this.user.apiToken);
-      this.movies = result.result;
-    },
+    onLoadMoreClick() {
+      this.$store.dispatch('movie/loadMore');
+    }
   },
   components: {
-    MovieListItem,
-  },
+    MovieListItem
+  }
 });
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.movie-list {
+  width: 80%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: auto;
+
+  .load-more-btn {
+    padding: 20px 25px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    margin: auto;
+
+    &:hover {
+      background-color: white;
+      color: #3a3a3a;
+    }
+
+    &:focus {
+      outline:0;
+    }
+  }
+}
 </style>

@@ -3,12 +3,12 @@ export default {
 
   state: {
     name: 'Bob Razowski',
-    apiToken: '273b9080',
+    apiToken: '273b9080'
   },
 
   mutations: {},
 
   actions: {},
 
-  getters: {},
+  getters: {}
 };
