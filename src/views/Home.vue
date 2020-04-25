@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <MovieList />
+    <movie-list />
   </div>
 </template>
 
@@ -9,7 +9,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import MovieList from '@/components/MovieList.vue';
 
 @Component({
-  components: { MovieList },
+  components: { MovieList }
 })
 export default class Home extends Vue {
 
