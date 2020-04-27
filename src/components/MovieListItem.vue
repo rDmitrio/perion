@@ -24,7 +24,7 @@ export default Vue.extend({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .movie-list-item {
-  width: 200px;
+  width: 240px;
   height: auto;
   border-radius: 7px;
   margin: 7px;

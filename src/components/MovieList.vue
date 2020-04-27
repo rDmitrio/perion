@@ -46,8 +46,8 @@ export default Vue.extend({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .movie-list {
-  width: 80%;
-  max-width: 1000px;
+  width: 100%;
+  max-width: 1030px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -61,6 +61,7 @@ export default Vue.extend({
     color: white;
     margin: auto;
     transition: all 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
+    font-size: 16px;
 
     &:hover {
       background-color: white;

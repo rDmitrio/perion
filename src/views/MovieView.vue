@@ -82,7 +82,7 @@ export default Vue.extend({
     background-color: transparent;
     border: 2px solid white;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 7px;
     transition: all 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
 
@@ -103,7 +103,7 @@ export default Vue.extend({
     justify-content: center;
 
     .column {
-      width: calc(50% - 30px);
+      width: calc(40% - 30px);
       padding: 0 15px;
     }
 
