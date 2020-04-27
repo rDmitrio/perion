@@ -60,6 +60,7 @@ export default Vue.extend({
     border: 2px solid white;
     color: white;
     margin: auto;
+    transition: all 0.3s cubic-bezier(0.77,0.2,0.05,1.0);
 
     &:hover {
       background-color: white;
