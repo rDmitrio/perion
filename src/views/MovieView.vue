@@ -88,7 +88,7 @@ export default Vue.extend({
 
     &:hover {
       background-color: white;
-      color: #3a3a3a;
+      color: #2e2e2e;
     }
 
     &:focus {
